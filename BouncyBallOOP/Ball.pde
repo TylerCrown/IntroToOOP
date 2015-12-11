@@ -8,6 +8,7 @@ class Ball {
   Ball() {
     diam = 50;
     vel = PVector.random2D();
+    vel.mult(4);
     loc = new PVector(random(diam, width-diam), random(diam, height-diam));
     c = color(random(255), random(50), random(100, 255));
   }
@@ -20,5 +21,13 @@ class Ball {
   }
   void move() {
     loc.add(vel);
-}
+  }
+  void bounce() {
+    if (loc.x <= 0 || loc.x >= width) {
+      vel.x = -vel.x;
+    }
+    if (loc.y <= 0 || loc.y >= height) {
+      vel.y = -vel.y;
+    }
+  }
 }
